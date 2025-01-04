@@ -16,3 +16,14 @@ This will create wrong color images when viewed on regular software (like VLC Me
 
 ### Errata
 None so far. Rev. A works well.
+
+### Credits
+
+Firmware based on the excellent work of Gaurav Singh in the [PE1005_USB3_camera](https://github.com/circuitvalley/PE1005_USB3_camera).  
+https://www.circuitvalley.com/2020/02/diy-usb-3-1080-full-hd-camera-PE1005-auto-focus-optical-zoom-cypress-fx3-usb.html
+
+### Licensing
+
+Cypress released their SDK examples licensed as  
+`All Rights Reserved, UNPUBLISHED, LICENSED SOFTWARE, CONFIDENTIAL AND PROPRIETARY INFORMATION`.  
+The `PE1005_USB3_camera` repo was licensed as GPLv3, this repo should also be held "in spirit" of GPLv3.
