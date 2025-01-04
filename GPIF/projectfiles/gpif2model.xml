@@ -10,20 +10,20 @@
       <InterfaceType>Slave</InterfaceType>
       <CommunicationType>Synchronous</CommunicationType>
       <ClockSource>External</ClockSource>
-      <ClockEdge>Negative</ClockEdge>
-      <Endianness>LittleEndian</Endianness>
+      <ClockEdge>Positive</ClockEdge>
+      <Endianness>BigEndian</Endianness>
       <DataBusWidth>Bit16</DataBusWidth>
       <AddressBuswidth>0</AddressBuswidth>
     </InterfaceSetting>
   </InterfaceDefination>
   <Signals>
     <Signal ElementId="INPUT0" SignalType="Input" SpecialFunction="None">
-      <DisplayName>LV</DisplayName>
+      <DisplayName>HSYNC</DisplayName>
       <GPIOPinNumber>GPIO_23</GPIOPinNumber>
       <Polarity>ActiveHigh</Polarity>
     </Signal>
     <Signal ElementId="INPUT1" SignalType="Input" SpecialFunction="None">
-      <DisplayName>FV</DisplayName>
+      <DisplayName>VSYNC</DisplayName>
       <GPIOPinNumber>GPIO_22</GPIOPinNumber>
       <Polarity>ActiveHigh</Polarity>
     </Signal>
@@ -51,6 +51,11 @@
       <Delay>Alpha</Delay>
       <AssetionType>Assert</AssetionType>
     </Signal>
+    <Signal ElementId="INPUT2" SignalType="Input" SpecialFunction="None">
+      <DisplayName>DATA_VALID</DisplayName>
+      <GPIOPinNumber>GPIO_24</GPIOPinNumber>
+      <Polarity>ActiveHigh</Polarity>
+    </Signal>
   </Signals>
   <StateMachine>
     <AddressCounter />
@@ -70,9 +75,6 @@
       <DisplayName>IDLE_SCK0</DisplayName>
       <RepeatUntillNextTransition>True</RepeatUntillNextTransition>
       <RepeatCount>0</RepeatCount>
-      <Action ElementId="DR_GPIO0" ActionType="DR_GPIO">
-        <ControlPinName>OUTPUT2</ControlPinName>
-      </Action>
     </State>
     <State ElementId="STARTSTATE1" StateType="StartState">
       <DisplayName>START_SCK1</DisplayName>
@@ -83,9 +85,6 @@
       <DisplayName>IDLE_SCK1</DisplayName>
       <RepeatUntillNextTransition>True</RepeatUntillNextTransition>
       <RepeatCount>0</RepeatCount>
-      <Action ElementId="DR_GPIO0" ActionType="DR_GPIO">
-        <ControlPinName>OUTPUT2</ControlPinName>
-      </Action>
     </State>
     <State ElementId="STATE4" StateType="NormalState">
       <DisplayName>PUSH_DATA_SCK0</DisplayName>
@@ -106,7 +105,9 @@
         <CounterIncrement>1</CounterIncrement>
         <CounterInterrupt>Mask</CounterInterrupt>
       </Action>
-      <Action ElementId="COUNT_CTRL0" ActionType="COUNT_CTRL" />
+      <Action ElementId="DR_GPIO0" ActionType="DR_GPIO">
+        <ControlPinName>OUTPUT2</ControlPinName>
+      </Action>
     </State>
     <State ElementId="STATE5" StateType="NormalState">
       <DisplayName>PUSH_DATA_SCK1</DisplayName>
@@ -127,20 +128,14 @@
         <CounterIncrement>1</CounterIncrement>
         <CounterInterrupt>Mask</CounterInterrupt>
       </Action>
-      <Action ElementId="COUNT_CTRL0" ActionType="COUNT_CTRL" />
+      <Action ElementId="DR_GPIO0" ActionType="DR_GPIO">
+        <ControlPinName>OUTPUT2</ControlPinName>
+      </Action>
     </State>
     <State ElementId="STATE6" StateType="NormalState">
       <DisplayName>LINE_END_SCK0</DisplayName>
       <RepeatUntillNextTransition>True</RepeatUntillNextTransition>
       <RepeatCount>0</RepeatCount>
-      <Action ElementId="LD_CTRL_COUNT0" ActionType="LD_CTRL_COUNT">
-        <CounterType>Up</CounterType>
-        <CounterLoadValue>0</CounterLoadValue>
-        <CounterLimit>677</CounterLimit>
-        <CounterReloadEnable>Disable</CounterReloadEnable>
-        <CounterIncrement>1</CounterIncrement>
-        <CounterInterrupt>Mask</CounterInterrupt>
-      </Action>
       <Action ElementId="DR_GPIO0" ActionType="DR_GPIO">
         <ControlPinName>OUTPUT1</ControlPinName>
       </Action>
@@ -149,22 +144,15 @@
       <DisplayName>LINE_END_SCK1</DisplayName>
       <RepeatUntillNextTransition>True</RepeatUntillNextTransition>
       <RepeatCount>0</RepeatCount>
-      <Action ElementId="LD_CTRL_COUNT0" ActionType="LD_CTRL_COUNT">
-        <CounterType>Up</CounterType>
-        <CounterLoadValue>0</CounterLoadValue>
-        <CounterLimit>677</CounterLimit>
-        <CounterReloadEnable>Disable</CounterReloadEnable>
-        <CounterIncrement>1</CounterIncrement>
-        <CounterInterrupt>Mask</CounterInterrupt>
-      </Action>
       <Action ElementId="DR_GPIO0" ActionType="DR_GPIO">
         <ControlPinName>OUTPUT1</ControlPinName>
       </Action>
     </State>
     <State ElementId="STATE10" StateType="NormalState">
       <DisplayName>STATE10</DisplayName>
-      <RepeatUntillNextTransition>True</RepeatUntillNextTransition>
+      <RepeatUntillNextTransition>False</RepeatUntillNextTransition>
       <RepeatCount>0</RepeatCount>
+      <Action ElementId="COUNT_CTRL0" ActionType="COUNT_CTRL" />
     </State>
     <State ElementId="STATE12" StateType="NormalState">
       <DisplayName>PARTIAL_BUF_IN_SCK0</DisplayName>
@@ -211,7 +199,7 @@
       <Action ElementId="LD_CTRL_COUNT0" ActionType="LD_CTRL_COUNT">
         <CounterType>Up</CounterType>
         <CounterLoadValue>0</CounterLoadValue>
-        <CounterLimit>677</CounterLimit>
+        <CounterLimit>1024</CounterLimit>
         <CounterReloadEnable>Disable</CounterReloadEnable>
         <CounterIncrement>1</CounterIncrement>
         <CounterInterrupt>Mask</CounterInterrupt>
@@ -240,7 +228,7 @@
       <Action ElementId="LD_CTRL_COUNT0" ActionType="LD_CTRL_COUNT">
         <CounterType>Up</CounterType>
         <CounterLoadValue>0</CounterLoadValue>
-        <CounterLimit>677</CounterLimit>
+        <CounterLimit>1024</CounterLimit>
         <CounterReloadEnable>Disable</CounterReloadEnable>
         <CounterIncrement>1</CounterIncrement>
         <CounterInterrupt>Mask</CounterInterrupt>
@@ -248,30 +236,31 @@
     </State>
     <State ElementId="STATE9" StateType="NormalState">
       <DisplayName>STATE9</DisplayName>
-      <RepeatUntillNextTransition>True</RepeatUntillNextTransition>
+      <RepeatUntillNextTransition>False</RepeatUntillNextTransition>
       <RepeatCount>0</RepeatCount>
+      <Action ElementId="COUNT_CTRL0" ActionType="COUNT_CTRL" />
     </State>
-    <Transition ElementId="TRANSITION40" SourceState="STATE9" DestinationState="STATE5" Equation="!LV&amp;DATA_CNT_HIT" />
-    <Transition ElementId="TRANSITION9" SourceState="STATE4" DestinationState="STATE6" Equation="CTRL_CNT_HIT" />
-    <Transition ElementId="TRANSITION41" SourceState="STATE0" DestinationState="STATE19" Equation="FV&amp;LV" />
-    <Transition ElementId="TRANSITION36" SourceState="STATE6" DestinationState="STATE12" Equation="FV" />
-    <Transition ElementId="TRANSITION43" SourceState="STATE7" DestinationState="STATE13" Equation="FV &amp; !LV" />
-    <Transition ElementId="TRANSITION8" SourceState="STATE5" DestinationState="STATE7" Equation="CTRL_CNT_HIT" />
+    <Transition ElementId="TRANSITION40" SourceState="STATE9" DestinationState="STATE5" Equation="DATA_CNT_HIT" />
+    <Transition ElementId="TRANSITION9" SourceState="STATE4" DestinationState="STATE6" Equation="DATA_VALID" />
+    <Transition ElementId="TRANSITION41" SourceState="STATE0" DestinationState="STATE19" Equation="!VSYNC&amp;!HSYNC" />
+    <Transition ElementId="TRANSITION36" SourceState="STATE6" DestinationState="STATE12" Equation="CTRL_CNT_HIT &amp; DATA_VALID &amp; !HSYNC" />
+    <Transition ElementId="TRANSITION43" SourceState="STATE7" DestinationState="STATE13" Equation="CTRL_CNT_HIT &amp; DATA_VALID  &amp; !HSYNC" />
+    <Transition ElementId="TRANSITION8" SourceState="STATE5" DestinationState="STATE7" Equation="DATA_VALID" />
     <Transition ElementId="TRANSITION0" SourceState="STARTSTATE0" DestinationState="STATE0" Equation="LOGIC_ONE" />
     <Transition ElementId="TRANSITION1" SourceState="STARTSTATE1" DestinationState="STATE1" Equation="LOGIC_ONE" />
-    <Transition ElementId="TRANSITION6" SourceState="STATE4" DestinationState="STATE5" Equation="!LV &amp; DATA_CNT_HIT" />
-    <Transition ElementId="TRANSITION7" SourceState="STATE5" DestinationState="STATE4" Equation="!LV &amp; ADDR_CNT_HIT" />
-    <Transition ElementId="TRANSITION30" SourceState="STATE9" DestinationState="STATE4" Equation="!LV&amp;!DATA_CNT_HIT" />
-    <Transition ElementId="TRANSITION37" SourceState="STATE7" DestinationState="STATE10" Equation="LV &amp; !FV" />
-    <Transition ElementId="TRANSITION38" SourceState="STATE10" DestinationState="STATE5" Equation="!LV&amp;!ADDR_CNT_HIT" />
-    <Transition ElementId="TRANSITION39" SourceState="STATE10" DestinationState="STATE4" Equation="!LV&amp;ADDR_CNT_HIT" />
+    <Transition ElementId="TRANSITION6" SourceState="STATE4" DestinationState="STATE5" Equation="!DATA_VALID &amp; DATA_CNT_HIT" />
+    <Transition ElementId="TRANSITION7" SourceState="STATE5" DestinationState="STATE4" Equation="!DATA_VALID &amp; ADDR_CNT_HIT" />
+    <Transition ElementId="TRANSITION30" SourceState="STATE9" DestinationState="STATE4" Equation="!DATA_CNT_HIT &amp; !DATA_VALID" />
+    <Transition ElementId="TRANSITION37" SourceState="STATE7" DestinationState="STATE10" Equation="!HSYNC &amp;  !CTRL_CNT_HIT" />
+    <Transition ElementId="TRANSITION38" SourceState="STATE10" DestinationState="STATE5" Equation="!ADDR_CNT_HIT &amp; !DATA_VALID" />
+    <Transition ElementId="TRANSITION39" SourceState="STATE10" DestinationState="STATE4" Equation="ADDR_CNT_HIT" />
     <Transition ElementId="TRANSITION22" SourceState="STATE12" DestinationState="STATE16" Equation="FW_TRG" />
     <Transition ElementId="TRANSITION25" SourceState="STATE13" DestinationState="STATE17" Equation="FW_TRG" />
-    <Transition ElementId="TRANSITION26" SourceState="STATE16" DestinationState="STATE1" Equation="!FW_TRG" />
-    <Transition ElementId="TRANSITION27" SourceState="STATE17" DestinationState="STATE0" Equation="!FW_TRG" />
-    <Transition ElementId="TRANSITION32" SourceState="STATE19" DestinationState="STATE4" Equation="!FV&amp;!LV" />
-    <Transition ElementId="TRANSITION35" SourceState="STATE21" DestinationState="STATE5" Equation="!FV&amp;!LV" />
-    <Transition ElementId="TRANSITION34" SourceState="STATE6" DestinationState="STATE9" Equation="LV &amp; !FV" />
-    <Transition ElementId="TRANSITION42" SourceState="STATE1" DestinationState="STATE21" Equation="FV&amp;LV" />
+    <Transition ElementId="TRANSITION14" SourceState="STATE16" DestinationState="STATE21" Equation="!FW_TRG" />
+    <Transition ElementId="TRANSITION15" SourceState="STATE17" DestinationState="STATE19" Equation="!FW_TRG" />
+    <Transition ElementId="TRANSITION34" SourceState="STATE6" DestinationState="STATE9" Equation="!HSYNC &amp; !CTRL_CNT_HIT" />
+    <Transition ElementId="TRANSITION42" SourceState="STATE1" DestinationState="STATE21" Equation="!VSYNC&amp;!HSYNC" />
+    <Transition ElementId="TRANSITION11" SourceState="STATE19" DestinationState="STATE4" Equation="!DATA_VALID" />
+    <Transition ElementId="TRANSITION12" SourceState="STATE21" DestinationState="STATE5" Equation="!DATA_VALID" />
   </StateMachine>
 </GPIFIIModel>

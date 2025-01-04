@@ -486,7 +486,7 @@ const uint8_t CyFxUSBHSConfigDscr[] =
         0x04,                           /* Subtype : uncompressed format I/F */
         0x01,                           /* Format desciptor index (only one format is supported) */
         0x01,                           /* number of frame descriptor followed */
-        0x59,0x31,0x36,0x20,            /* GUID used to identify streaming-encoding format: "Y16 "  */
+        0x59,0x55,0x59,0x32,            /* GUID used to identify streaming-encoding format: YUY2  */
         0x00,0x00,0x10,0x00,
         0x80,0x00,0x00,0xAA,
         0x00,0x38,0x9B,0x71,
@@ -825,7 +825,7 @@ const uint8_t CyFxUSBSSConfigDscr[] =
         0x04,                           /* Subtype : uncompressed format I/F */
         0x01,                           /* Format desciptor index */
         0x01,                           /* Number of frame descriptor followed */
-        0x59,0x31,0x36,0x20,            /* GUID used to identify streaming-encoding format: "Y16 "  */
+        0x59,0x55,0x59,0x32,            /* GUID used to identify streaming-encoding format: YUY2  */
         0x00,0x00,0x10,0x00,
         0x80,0x00,0x00,0xAA,
         0x00,0x38,0x9B,0x71,

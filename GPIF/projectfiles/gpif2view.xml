@@ -24,8 +24,8 @@
       <ParentID>00000000-0000-0000-0000-000000000000</ParentID>
     </CyNormalState>
     <CyNormalState>
-      <Left>411.2</Left>
-      <Top>257</Top>
+      <Left>390.2</Left>
+      <Top>286</Top>
       <Width>83</Width>
       <Height>70</Height>
       <Name>STATE4</Name>
@@ -35,8 +35,8 @@
       <ParentID>00000000-0000-0000-0000-000000000000</ParentID>
     </CyNormalState>
     <CyNormalState>
-      <Left>735.8</Left>
-      <Top>244.4</Top>
+      <Left>899.8</Left>
+      <Top>308.4</Top>
       <Width>83</Width>
       <Height>70</Height>
       <Name>STATE5</Name>
@@ -79,8 +79,8 @@
       <ParentID>00000000-0000-0000-0000-000000000000</ParentID>
     </CyNormalState>
     <CyNormalState>
-      <Left>1091</Left>
-      <Top>567.12</Top>
+      <Left>1235</Left>
+      <Top>554.12</Top>
       <Width>83</Width>
       <Height>70</Height>
       <Name>STATE13</Name>
@@ -101,8 +101,8 @@
       <ParentID>00000000-0000-0000-0000-000000000000</ParentID>
     </CyNormalState>
     <CyNormalState>
-      <Left>793.2</Left>
-      <Top>629.04</Top>
+      <Left>1087.2</Left>
+      <Top>674.04</Top>
       <Width>83</Width>
       <Height>70</Height>
       <Name>STATE17</Name>
@@ -112,8 +112,8 @@
       <ParentID>00000000-0000-0000-0000-000000000000</ParentID>
     </CyNormalState>
     <CyNormalState>
-      <Left>411.2</Left>
-      <Top>136</Top>
+      <Left>379.2</Left>
+      <Top>137</Top>
       <Width>83</Width>
       <Height>70</Height>
       <Name>STATE19</Name>
@@ -123,8 +123,8 @@
       <ParentID>00000000-0000-0000-0000-000000000000</ParentID>
     </CyNormalState>
     <CyNormalState>
-      <Left>862.4</Left>
-      <Top>120.8</Top>
+      <Left>846.4</Left>
+      <Top>147.8</Top>
       <Width>83</Width>
       <Height>70</Height>
       <Name>STATE21</Name>
@@ -134,8 +134,8 @@
       <ParentID>00000000-0000-0000-0000-000000000000</ParentID>
     </CyNormalState>
     <CyNormalState>
-      <Left>431.2</Left>
-      <Top>555.01</Top>
+      <Left>401.2</Left>
+      <Top>543.01</Top>
       <Width>83</Width>
       <Height>70</Height>
       <Name>STATE9</Name>
@@ -145,8 +145,8 @@
       <ParentID>00000000-0000-0000-0000-000000000000</ParentID>
     </CyNormalState>
     <CyNormalState>
-      <Left>897.4</Left>
-      <Top>525.61</Top>
+      <Left>821.4</Left>
+      <Top>539.61</Top>
       <Width>83</Width>
       <Height>70</Height>
       <Name>STATE10</Name>
@@ -180,8 +180,52 @@
   </CyStates>
   <CyTransitions>
     <CyTransition>
+      <Name>TRANSITION15</Name>
+      <TransitionEquation>!FW_TRG</TransitionEquation>
+      <SourceName>STATE17</SourceName>
+      <SinkName>STATE19</SinkName>
+      <SourceConnectorName>Connector</SourceConnectorName>
+      <SinkConnectorName>Connector</SinkConnectorName>
+      <SourceArrowSymbol>None</SourceArrowSymbol>
+      <SinkArrowSymbol>Arrow</SinkArrowSymbol>
+      <zIndex>0</zIndex>
+    </CyTransition>
+    <CyTransition>
+      <Name>TRANSITION14</Name>
+      <TransitionEquation>!FW_TRG</TransitionEquation>
+      <SourceName>STATE16</SourceName>
+      <SinkName>STATE21</SinkName>
+      <SourceConnectorName>Connector</SourceConnectorName>
+      <SinkConnectorName>Connector</SinkConnectorName>
+      <SourceArrowSymbol>None</SourceArrowSymbol>
+      <SinkArrowSymbol>Arrow</SinkArrowSymbol>
+      <zIndex>0</zIndex>
+    </CyTransition>
+    <CyTransition>
+      <Name>TRANSITION12</Name>
+      <TransitionEquation>!DATA_VALID</TransitionEquation>
+      <SourceName>STATE21</SourceName>
+      <SinkName>STATE5</SinkName>
+      <SourceConnectorName>Connector</SourceConnectorName>
+      <SinkConnectorName>Connector</SinkConnectorName>
+      <SourceArrowSymbol>None</SourceArrowSymbol>
+      <SinkArrowSymbol>Arrow</SinkArrowSymbol>
+      <zIndex>0</zIndex>
+    </CyTransition>
+    <CyTransition>
+      <Name>TRANSITION11</Name>
+      <TransitionEquation>!DATA_VALID</TransitionEquation>
+      <SourceName>STATE19</SourceName>
+      <SinkName>STATE4</SinkName>
+      <SourceConnectorName>Connector</SourceConnectorName>
+      <SinkConnectorName>Connector</SinkConnectorName>
+      <SourceArrowSymbol>None</SourceArrowSymbol>
+      <SinkArrowSymbol>Arrow</SinkArrowSymbol>
+      <zIndex>0</zIndex>
+    </CyTransition>
+    <CyTransition>
       <Name>TRANSITION43</Name>
-      <TransitionEquation>FV &amp; !LV</TransitionEquation>
+      <TransitionEquation>CTRL_CNT_HIT &amp; DATA_VALID  &amp; !HSYNC</TransitionEquation>
       <SourceName>STATE7</SourceName>
       <SinkName>STATE13</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -192,7 +236,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION42</Name>
-      <TransitionEquation>FV&amp;LV</TransitionEquation>
+      <TransitionEquation>!VSYNC&amp;!HSYNC</TransitionEquation>
       <SourceName>STATE1</SourceName>
       <SinkName>STATE21</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -203,7 +247,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION41</Name>
-      <TransitionEquation>FV&amp;LV</TransitionEquation>
+      <TransitionEquation>!VSYNC&amp;!HSYNC</TransitionEquation>
       <SourceName>STATE0</SourceName>
       <SinkName>STATE19</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -214,7 +258,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION40</Name>
-      <TransitionEquation>!LV&amp;DATA_CNT_HIT</TransitionEquation>
+      <TransitionEquation>DATA_CNT_HIT</TransitionEquation>
       <SourceName>STATE9</SourceName>
       <SinkName>STATE5</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -225,7 +269,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION39</Name>
-      <TransitionEquation>!LV&amp;ADDR_CNT_HIT</TransitionEquation>
+      <TransitionEquation>ADDR_CNT_HIT</TransitionEquation>
       <SourceName>STATE10</SourceName>
       <SinkName>STATE4</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -236,7 +280,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION38</Name>
-      <TransitionEquation>!LV&amp;!ADDR_CNT_HIT</TransitionEquation>
+      <TransitionEquation>!ADDR_CNT_HIT &amp; !DATA_VALID</TransitionEquation>
       <SourceName>STATE10</SourceName>
       <SinkName>STATE5</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -247,7 +291,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION37</Name>
-      <TransitionEquation>LV &amp; !FV</TransitionEquation>
+      <TransitionEquation>!HSYNC &amp;  !CTRL_CNT_HIT</TransitionEquation>
       <SourceName>STATE7</SourceName>
       <SinkName>STATE10</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -258,7 +302,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION36</Name>
-      <TransitionEquation>FV</TransitionEquation>
+      <TransitionEquation>CTRL_CNT_HIT &amp; DATA_VALID &amp; !HSYNC</TransitionEquation>
       <SourceName>STATE6</SourceName>
       <SinkName>STATE12</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -269,7 +313,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION34</Name>
-      <TransitionEquation>LV &amp; !FV</TransitionEquation>
+      <TransitionEquation>!HSYNC &amp; !CTRL_CNT_HIT</TransitionEquation>
       <SourceName>STATE6</SourceName>
       <SinkName>STATE9</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -280,7 +324,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION30</Name>
-      <TransitionEquation>!LV&amp;!DATA_CNT_HIT</TransitionEquation>
+      <TransitionEquation>!DATA_CNT_HIT &amp; !DATA_VALID</TransitionEquation>
       <SourceName>STATE9</SourceName>
       <SinkName>STATE4</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -291,7 +335,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION9</Name>
-      <TransitionEquation>CTRL_CNT_HIT</TransitionEquation>
+      <TransitionEquation>DATA_VALID</TransitionEquation>
       <SourceName>STATE4</SourceName>
       <SinkName>STATE6</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -302,53 +346,9 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION8</Name>
-      <TransitionEquation>CTRL_CNT_HIT</TransitionEquation>
+      <TransitionEquation>DATA_VALID</TransitionEquation>
       <SourceName>STATE5</SourceName>
       <SinkName>STATE7</SinkName>
-      <SourceConnectorName>Connector</SourceConnectorName>
-      <SinkConnectorName>Connector</SinkConnectorName>
-      <SourceArrowSymbol>None</SourceArrowSymbol>
-      <SinkArrowSymbol>Arrow</SinkArrowSymbol>
-      <zIndex>0</zIndex>
-    </CyTransition>
-    <CyTransition>
-      <Name>TRANSITION35</Name>
-      <TransitionEquation>!FV&amp;!LV</TransitionEquation>
-      <SourceName>STATE21</SourceName>
-      <SinkName>STATE5</SinkName>
-      <SourceConnectorName>Connector</SourceConnectorName>
-      <SinkConnectorName>Connector</SinkConnectorName>
-      <SourceArrowSymbol>None</SourceArrowSymbol>
-      <SinkArrowSymbol>Arrow</SinkArrowSymbol>
-      <zIndex>0</zIndex>
-    </CyTransition>
-    <CyTransition>
-      <Name>TRANSITION32</Name>
-      <TransitionEquation>!FV&amp;!LV</TransitionEquation>
-      <SourceName>STATE19</SourceName>
-      <SinkName>STATE4</SinkName>
-      <SourceConnectorName>Connector</SourceConnectorName>
-      <SinkConnectorName>Connector</SinkConnectorName>
-      <SourceArrowSymbol>None</SourceArrowSymbol>
-      <SinkArrowSymbol>Arrow</SinkArrowSymbol>
-      <zIndex>0</zIndex>
-    </CyTransition>
-    <CyTransition>
-      <Name>TRANSITION27</Name>
-      <TransitionEquation>!FW_TRG</TransitionEquation>
-      <SourceName>STATE17</SourceName>
-      <SinkName>STATE0</SinkName>
-      <SourceConnectorName>Connector</SourceConnectorName>
-      <SinkConnectorName>Connector</SinkConnectorName>
-      <SourceArrowSymbol>None</SourceArrowSymbol>
-      <SinkArrowSymbol>Arrow</SinkArrowSymbol>
-      <zIndex>0</zIndex>
-    </CyTransition>
-    <CyTransition>
-      <Name>TRANSITION26</Name>
-      <TransitionEquation>!FW_TRG</TransitionEquation>
-      <SourceName>STATE16</SourceName>
-      <SinkName>STATE1</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
       <SinkConnectorName>Connector</SinkConnectorName>
       <SourceArrowSymbol>None</SourceArrowSymbol>
@@ -379,7 +379,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION7</Name>
-      <TransitionEquation>!LV &amp; ADDR_CNT_HIT</TransitionEquation>
+      <TransitionEquation>!DATA_VALID &amp; ADDR_CNT_HIT</TransitionEquation>
       <SourceName>STATE5</SourceName>
       <SinkName>STATE4</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>
@@ -390,7 +390,7 @@
     </CyTransition>
     <CyTransition>
       <Name>TRANSITION6</Name>
-      <TransitionEquation>!LV &amp; DATA_CNT_HIT</TransitionEquation>
+      <TransitionEquation>!DATA_VALID &amp; DATA_CNT_HIT</TransitionEquation>
       <SourceName>STATE4</SourceName>
       <SinkName>STATE5</SinkName>
       <SourceConnectorName>Connector</SourceConnectorName>

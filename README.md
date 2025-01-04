@@ -1,3 +1,2 @@
-# FX3_USB_UVC
+# Cypress FX3-based 16bit LVDS Framegrabber
 
-Repo for FX3 Based UVC Projects 
