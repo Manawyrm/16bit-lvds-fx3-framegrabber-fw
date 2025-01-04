@@ -14,9 +14,6 @@ This will create wrong color images when viewed on regular software (like VLC Me
 ### Additional info 
 [Hardware design files](https://github.com/Manawyrm/16bit-lvds-fx3-framegrabber)  
 
-### Errata
-None so far. Rev. A works well.
-
 ### Credits
 
 Firmware based on the excellent work of Gaurav Singh in the [PE1005_USB3_camera](https://github.com/circuitvalley/PE1005_USB3_camera).  
